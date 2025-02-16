@@ -15,7 +15,28 @@ return {
         },
         opts = {
             servers = {
-                lua_ls = {},
+                vtsls = {},
+                lua_ls = {
+                    settings = {
+                        Lua = {
+                            runtime = {
+                                version = "LuaJIT",
+                                path = vim.split(package.path, ";")
+                            },
+                            diagnostics = {
+                                globals = {"vim"}
+                            },
+                            workspace = {
+                                checkThirdParty = false,
+                                library = {
+                                    vim.env.VIMRUNTIME,
+                                    vim.fn.stdpath("config")
+                                },
+                            },
+                        },
+                    },
+                },
+
                 clangd = {
                     cmd = {
                         "clangd",
