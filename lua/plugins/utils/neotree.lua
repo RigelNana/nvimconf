@@ -120,4 +120,9 @@ return {
             },
         },
     },
+    config = function(_, opts)
+        require('neo-tree').setup(opts)
+        require('transparent').clear_prefix('NeoTree')
+    end
+
 }

@@ -6,10 +6,13 @@ return {
         vim.diagnostic.config {
             update_in_insert = true, -- 在插入模式下更新诊断信息
         }
-        require("bufferline").setup {
+            vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "切换到下一个 buffer" })
+            vim.keymap.set("n", "<leader>bp", ":bprev<CR>", { desc = "切换到上一个 buffer" })
+            vim.keymap.set("n", "<leader>bc", ":bdelete!<CR>", { desc = "关闭当前 buffer" })
+                require("bufferline").setup {
             options = {
                 mode = "buffers", -- 使用 buffer 模式（可以改为 "tabs" 切换标签页）
-                numbers = "none", -- 不显示 buffer 编号，可以改为 "ordinal" 或 "buffer_id"
+                numbers = "ordinal", -- 不显示 buffer 编号，可以改为 "ordinal" 或 "buffer_id"
                 close_command = "bdelete! %d", -- 使用 `bdelete!` 关闭 buffer
                 right_mouse_command = "bdelete! %d", -- 右键关闭
                 indicator = {
@@ -54,5 +57,14 @@ return {
             },
             highlights = require("catppuccin.groups.integrations.bufferline").get(), -- 如果你使用了 catppuccin 的配色
         }
+         vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {},
+          vim.tbl_map(function(v)
+            return v.hl_group
+          end, 
+          vim.tbl_values(require('bufferline.config').highlights)))
+          require('transparent').clear_prefix('BufferLine')
+        require('transparent').clear_prefix('plenary')
+        require('transparent').clear_prefix('nvim-web-devicons')
+
     end,
 }

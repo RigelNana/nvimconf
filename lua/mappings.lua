@@ -23,3 +23,6 @@ map("n", "<leader>cr", "<cmd>CMakeRun<CR>", opt)
 map("n", "<leader>cd", "<cmd>CMakeDebug<CR>", opt)
 map("n", "<leader>cc", "<cmd>CMakeClean<CR>", opt)
 map("n", "<leader>r", ":w<CR>:!g++ % -o %:r -std=c++20 -Wall && ./%:r<CR>", opt)
+
+
+

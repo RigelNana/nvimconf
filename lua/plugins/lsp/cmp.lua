@@ -128,5 +128,6 @@ return {
                 { name = "cmdline_history" },
             }),
         })
+
     end,
 }

@@ -88,3 +88,5 @@ vim.opt.undofile = true             -- 启用持久化撤销
 
 -- 扩展功能
 vim.opt.wildmenu = true             -- 启用增强的补全菜单
+
+
